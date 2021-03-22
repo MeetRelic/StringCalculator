@@ -20,27 +20,35 @@ public class TestCalculator {
     public void Task1Calcultor_ShouldcheckComma() throws MyException {
 		assertEquals(10, Calculator.CalculatorTasks("3,7"));
 	}
+    
+    
     //Task 2 Starts - for n number of numbers is handled
     @Test
     public void Task1Calcultor_ShouldcheckMultipleComma() throws MyException {
 		assertEquals(44, Calculator.CalculatorTasks("3,7,8,7,9,10"));
 	}
+    
     //Task 3 starts - allow "\n" in place of comma 
     @Test
     public void Task1Calcultor_ShouldcheckMultipleCommaandNewline() throws MyException {
 		assertEquals(10, Calculator.CalculatorTasks("1,2,3\n4"));
 	}
+    
+    
     //Task 4 starts - allow custom delimeter which starts with "//" just to identify
     //default delimeter here is ; which works fine
     @Test
     public void Task1Calcultor_ShouldcheckDefault() throws MyException {
 		assertEquals(6, Calculator.CalculatorTasks("//;\n4;2"));
 	}
+    
     //Test for . default delimeter 
     @Test
     public void Task1Calcultor_ShouldcheckDefault1() throws MyException {
 		assertEquals(4, Calculator.CalculatorTasks("//.\n2.2"));
 	}
+    
+    
     //Task 5 - get all Negative with Exceptions
     @Test
     public void Task1Calcultor_CheckNegative() {
@@ -52,7 +60,8 @@ public class TestCalculator {
     		
     	}
 	}
-    //Number greater than 100 ignored 
+    
+    //Number greater than 1000 ignored 
     @Test
     public void Task1Calcultor_Ignore() throws MyException {
 		assertEquals(9, Calculator.CalculatorTasks("1001,2,3,4")); 

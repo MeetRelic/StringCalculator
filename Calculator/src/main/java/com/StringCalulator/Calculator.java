@@ -13,24 +13,37 @@ class MyException extends Exception
   
 public class Calculator {
 	
+
+	
+	
+	//This Method is main String Calculator Method.
+	public static int CalculatorTasks(String input) throws MyException {
+			return checkerofStringTypes(input);
+		
+	}
+	
+	//sub methods.
 	private static int  getAns(String[] splitString) throws MyException {
 		int ans = 0;
-		String negativechecker  = "";boolean checks = false;
+		String negativechecker  = "";
+		boolean checks = false;
+		
 		for(String s : splitString) {// as there can be n number of number 
 			int vals = Integer.parseInt(s);
-			if(vals > 1000) {
+			if(vals > 1000) { //checks greater than 1000 if true than continue
 				continue;
 			}
 			
 			ans  += vals;
 			
 			if(vals < 0 ) {
+				//checks for negative and adds to show the negative values in exception
 				negativechecker += s + " ";
 				checks = true;
 			}
 			
 		}
-		if(checks) {//checks for negative and throws exception
+		if(checks) { //checks for negative and throws exception
 			String throwstring ="negatives not allowed" +"- "+(negativechecker );
 			throw  new MyException(throwstring);  
 		}
@@ -43,9 +56,11 @@ public class Calculator {
 		pattern.matches();
 		String delimeters = pattern.group(1);
 		String values = pattern.group(2);
+		//as dot in java is sensitive
 		if(delimeters.contains(".")) {
 			return values.split("\\.");
 		}
+		
 		return values.split(delimeters);
 	}
 	private static String[] commaandnewLineDelimeted(String input) {
@@ -70,12 +85,5 @@ public class Calculator {
 				return getAns(commaandnewLineDelimeted(input));
 		}
 		}
-	}
-	
-	
-	//This Method is main String Calculator Method.
-	public static int CalculatorTasks(String input) throws MyException {
-			return checkerofStringTypes(input);
-		
 	}
 }
