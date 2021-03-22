@@ -18,13 +18,19 @@ public class Calculator {
 		String negativechecker  = "";boolean checks = false;
 		for(String s : splitString) {// as there can be n number of number 
 			int vals = Integer.parseInt(s);
+			if(vals > 1000) {
+				continue;
+			}
+			
 			ans  += vals;
+			
 			if(vals < 0 ) {
 				negativechecker += s + " ";
 				checks = true;
 			}
+			
 		}
-		if(checks) {
+		if(checks) {//checks for negative and throws exception
 			String throwstring ="negatives not allowed" +"- "+(negativechecker );
 			throw  new MyException(throwstring);  
 		}
@@ -53,22 +59,23 @@ public class Calculator {
 		
 	}
 	private static int checkerofStringTypes(String input) throws MyException {
-		if(input.startsWith("//")) {
-		return getAns(customDelimetedString(input));	
-		}else {
-		return getAns(commaandnewLineDelimeted(input));
+		//first we check if string is empty || Null we return 0
+		if(input.isEmpty()) {
+			return 0;
+		}
+		else {
+			if(input.startsWith("//")) {
+				return getAns(customDelimetedString(input));	
+		}	else {
+				return getAns(commaandnewLineDelimeted(input));
+		}
 		}
 	}
 	
 	
 	//This Method is main String Calculator Method.
 	public static int CalculatorTasks(String input) throws MyException {
-		//first we check if string is empty || Null we return 0
-		if(input.isEmpty()) {
-			return 0;
-		}else {
 			return checkerofStringTypes(input);
-		}
 		
 	}
 }
