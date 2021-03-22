@@ -30,4 +30,17 @@ public class TestCalculator {
     public void Task1Calcultor_ShouldcheckMultipleCommaandNewline() {
 		assertEquals(10, Calculator.CalculatorTasks("1,2,3\n4"));
 	}
+    //Task 4 starts - allow custom delimeter which starts with "//" just to identify
+    //default delimete here is ; which works fine
+    @Test
+    public void Task1Calcultor_ShouldcheckMultipleComm() {
+		assertEquals(6, Calculator.CalculatorTasks("//;\n4;2"));
+	}
+    //Test for . default delimeter 
+    @Test
+    public void Task1Calcultor_ShouldcheckMultipleCom() {
+		assertEquals(4, Calculator.CalculatorTasks("//.\n2.2"));
+	}
+    //Task 5
+    
 }
