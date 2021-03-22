@@ -9,6 +9,15 @@ public class Calculator {
 		//first we check if string is empty || Null we return 0
 		if(input.isEmpty()) {
 			return 0;
+		}else if(input.contains(",")) {
+			//if we get comma now we know as "," there is two number and our tast is to return sum of it , so will return!!
+		    String [] splitfromcomma = input.split(",");
+		    int ans = 0;
+		   for(String s : splitfromcomma) { // as there can be n number of number in comma
+		    	ans += Integer.parseInt(s);
+		    }
+		   
+		    return ans;
 		}
 		else {
 			//if not null and only one value in string we return directly Same int 
