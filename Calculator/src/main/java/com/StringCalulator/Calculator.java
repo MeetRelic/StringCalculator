@@ -2,15 +2,33 @@ package com.StringCalulator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+class MyException extends Exception 
+{ 
+    public MyException(String s) 
+    { 
+        // Call constructor of parent Exception 
+        super(s); 
+    } 
+} 
+  
 public class Calculator {
 	
-	private static int  getAns(String[] splitString) {
+	private static int  getAns(String[] splitString) throws MyException {
 		int ans = 0;
+		String negativechecker  = "";boolean checks = false;
 		for(String s : splitString) {// as there can be n number of number 
-			
-			ans  += Integer.parseInt(s);
+			int vals = Integer.parseInt(s);
+			ans  += vals;
+			if(vals < 0 ) {
+				negativechecker += s + " ";
+				checks = true;
+			}
 		}
+		if(checks) {
+			String throwstring ="negatives not allowed" +"- "+(negativechecker );
+			throw  new MyException(throwstring);  
+		}
+		
 		return ans;
 	}
 	
@@ -34,7 +52,7 @@ public class Calculator {
 		}
 		
 	}
-	private static int checkerofStringTypes(String input) {
+	private static int checkerofStringTypes(String input) throws MyException {
 		if(input.startsWith("//")) {
 		return getAns(customDelimetedString(input));	
 		}else {
@@ -44,7 +62,7 @@ public class Calculator {
 	
 	
 	//This Method is main String Calculator Method.
-	public static int CalculatorTasks(String input) {
+	public static int CalculatorTasks(String input) throws MyException {
 		//first we check if string is empty || Null we return 0
 		if(input.isEmpty()) {
 			return 0;
