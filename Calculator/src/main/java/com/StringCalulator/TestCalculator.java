@@ -55,7 +55,7 @@ public class TestCalculator {
     //Number greater than 100 ignored 
     @Test
     public void Task1Calcultor_Ignore() throws MyException {
-		assertEquals(9, Calculator.CalculatorTasks("1001,2,3,4"));
+		assertEquals(9, Calculator.CalculatorTasks("1001,2,3,4")); 
 	}
    
 }
