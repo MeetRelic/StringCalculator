@@ -12,9 +12,16 @@ class MyException extends Exception
 } 
   
 public class Calculator {
+	CalServices s ;
+     
+	public Calculator(CalServices services) {
+	  this.s =services;
+	}
 	
-
-	
+	public int adsd(int i ,int j) {
+	 
+		return s.newsadd(i, j);
+	}
 	
 	//This Method is main String Calculator Method.
 	public static int CalculatorTasks(String input) throws MyException {
